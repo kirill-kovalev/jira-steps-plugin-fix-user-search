@@ -165,13 +165,15 @@ public interface JiraEndPoints {
 
   // Users
   @GET("rest/api/2/user/search")
-  Call<Object> userSearch(@Query("username") String userName, @Query("startAt") int startAt,
+  Call<Object> userSearch(@Query("query") String userName, @Query("startAt") int startAt,
       @Query("maxResults") int maxResults);
 
   @GET("rest/api/2/user/assignable/search")
-  Call<Object> assignableUserSearch(@Query("username") String userName,
+  Call<Object> assignableUserSearch(
+      @Query("query") String userName,
       @Query("project") String project, @Query("issueKey") String issueKey,
-      @Query("startAt") int startAt, @Query("maxResults") int maxResults);
+      @Query("startAt") int startAt, @Query("maxResults") int maxResults
+  );
 
   @Multipart
   @Headers("X-Atlassian-Token: no-check")
